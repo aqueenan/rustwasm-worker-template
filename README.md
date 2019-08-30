@@ -1,10 +1,11 @@
-# 👷‍♀️🦀🕸️ `rustwasm-worker-template`
+# 👷‍♀️🦀🕸️ `rustwasm-static-template`
 
-A template for kick starting a Cloudflare worker project using
+A template for kick starting a Cloudflare-hosted static website project using
 [`wasm-pack`](https://github.com/rustwasm/wasm-pack).
 
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting worker to Cloudflare's worker infrastructure.
+This template is designed for serving the gzipped contents of the public
+folder from WebAssembly on Cloudflare's worker infrastructure to ensure
+blazingly-fast cold and warm response times.
 
 ## 🔋 Batteries Included
 
@@ -22,7 +23,7 @@ publishing the resulting worker to Cloudflare's worker infrastructure.
 [Learn more about `wrangler generate` here.](https://github.com/cloudflare/wrangler)
 
 ```
-wrangler generate wasm-worker  https://github.com/cloudflare/rustwasm-worker-template.git
+wrangler generate wasm-worker  https://github.com/aqueenan/rustwasm-static-template.git
 cd wasm-worker
 ```
 

@@ -3,6 +3,7 @@ name = "{{project-name}}"
 version = "0.1.0"
 authors = ["{{authors}}"]
 edition = "2018"
+build = "build.rs"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -12,6 +13,9 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 cfg-if = "0.1.2"
+includedir = "0.5.0"
+js-sys = "0.3.27"
+phf = "0.7.21"
 wasm-bindgen = "0.2"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -24,6 +28,9 @@ console_error_panic_hook = { version = "0.1.1", optional = true }
 # compared to the default allocator's ~10K. It is slower than the default
 # allocator, however.
 wee_alloc = { version = "0.4.2", optional = true }
+
+[build-dependencies]
+includedir_codegen = "0.5.0"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.2"

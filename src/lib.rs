@@ -1,9 +1,5 @@
-extern crate cfg_if;
-extern crate wasm_bindgen;
-
-mod utils;
-
 use cfg_if::cfg_if;
+use js_sys::Uint8Array;
 use wasm_bindgen::prelude::*;
 
 cfg_if! {
@@ -16,7 +12,11 @@ cfg_if! {
     }
 }
 
+include!(concat!(env!("OUT_DIR"), "/public.rs"));
+
 #[wasm_bindgen]
-pub fn greet() -> String {
-    "Hello, wasm-worker!".to_string()
+pub fn lookup(name: &str) -> Option<Uint8Array> {
+    let path = ["public", &name].concat();
+    let bytes = PUBLIC.get(&path).ok()?;
+    Some(Uint8Array::from(bytes.as_ref()))
 }
